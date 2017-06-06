@@ -1,0 +1,4 @@
+*.iml
+/platforms
+/.idea
+/plugins
