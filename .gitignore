@@ -2,3 +2,6 @@
 /platforms
 /.idea
 /plugins
+/typings
+/.vscode
+jsconfig.json

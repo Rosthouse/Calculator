@@ -69,6 +69,7 @@ body {
     border: #000000 inset thick;
     border-radius: 25px;
     text-shadow: 5px 5px 5px rgba(58, 58, 58, 0.8);
+    font-family: "Display", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input_field{
@@ -83,6 +84,14 @@ body {
     vertical-align: middle;
 }
 .button_field > span{
+}
+
+@font-face {
+    font-family: "Display";
+    src: local("res/font/display.ttf") format("truetype");
+}
+p.customfont { 
+    font-family: "Display", Verdana, Tahoma;
 }
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
