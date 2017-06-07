@@ -27,6 +27,12 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        var classname = document.getElementsByClassName("number_button");
+        for(var i = 0; i< classname.length; i++){
+            classname[i].addEventListener('click', function(){
+               calculator.setNumber(this.innerText);
+            }, false);
+        }
     },
     // deviceready Event Handler
     //

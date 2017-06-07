@@ -16,29 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+
+
+@font-face {
+    font-family: "Display";
+    src: url('../res/font/display.ttf');
 }
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    outline: none !important;
+} 
 
 html{
     height: 100%;
 }
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
@@ -46,11 +44,21 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
+   /* background: #333333; */
+    background-image:linear-gradient(top, #183356 0%, #091b33 51%);
+    background-image:-webkit-linear-gradient(top, #183356 0%, #091b33 51%);
+    background-image:-ms-linear-gradient(top, #183356 0%, #091b33 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #183356),
+        color-stop(1, #091b33)
+    );
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
@@ -62,14 +70,21 @@ body {
                                    /* offset horizontal: half of text area width */
 }
 
+.calculator {
+    margin: 2%;
+    height: 100%;
+}
+
 .input_fields{
     text-align: right;
     height: 25%;
-    font-size: xx-large;
+    font-size: 4em;
     border: #000000 inset thick;
     border-radius: 25px;
     text-shadow: 5px 5px 5px rgba(58, 58, 58, 0.8);
     font-family: "Display", Verdana, Geneva, Tahoma, sans-serif;
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #898989 0%, #a5a5a5 51%);
 }
 
 .input_field{
@@ -77,19 +92,57 @@ body {
     margin-right: 5%;
 }
 
+.operator_field{
+    text-align: left;
+    margin-left: 0;
+}
+
+.lcd_row{
+    vertical-align: middle;
+}
+.current_number_row > div{
+    display: inline-block;
+}
+
 .button_field{
-    margin-top: 2%;
+    margin-top: 10%;
     height: 50%;
     border: #000000 solid thick;
     vertical-align: middle;
-}
-.button_field > span{
+    border-radius: 10px 10px 25px 25px;
+    background: #091b33;
 }
 
-@font-face {
-    font-family: "Display";
-    src: local("res/font/display.ttf") format("truetype");
+.button_row{
+    height: 15%;
+    margin: 5%;
 }
+
+.push_button{
+    box-shadow: 1px 10px #091b33;
+    background-image: radial-gradient(red, green);
+    border-color: #132a47 #0d1d33;
+    border-radius: 10px 10px 25px 25px;
+    color: white;
+    width: 20%;
+    margin: 2%;
+    height:100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+}
+
+.number_button{
+    color: black;
+    background:  radial-gradient(#E4E4E4, #bfbfbf);
+    border-color: grey #333333;
+}
+
+.operator_button{
+    color: black;
+    border-color: grey #333333;
+    background:  radial-gradient(#9999ff, #8080ff);
+}
+
 p.customfont { 
     font-family: "Display", Verdana, Tahoma;
 }
