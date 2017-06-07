@@ -26,7 +26,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="msapplication-tap-highlight" content="no"/>
     <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy"
           content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
@@ -52,7 +52,7 @@
         </div>
         <div class="current_number_row">
             <div class="operator_field"><span id="operator" class="lcd_row"></span></div>
-            <div class="input_field"><span id="current_number_field"class="lcd_row"></span></div>
+            <div class="input_field"><span id="current_number_field"class="lcd_row">0</span></div>
         </div>
     </div>
     <div id="buttons" class="button_field">
@@ -60,31 +60,36 @@
             <button class="push_button number_button">7</button>
             <button class="push_button number_button">8</button>
             <button class="push_button number_button">9</button>
-            <button id="btnDivide"  onclick="calculator.divide()" class="push_button operator_button">&#x00F7;</button>
+            <button id="btnDivide"  onclick="calculator.setOperation('/', '&#x00F7')" class="push_button operator_button">&#x00F7;</button>
         </div>
         <div class="button_row">
             <button class="push_button number_button">4</button>
             <button class="push_button number_button">5</button>
             <button class="push_button number_button">6</button>
-            <button id="btnMultiply"  onclick="calculator.multiply()" class="push_button operator_button">&#x00D7;</button>
+            <button id="btnMultiply"  onclick="calculator.setOperation('*', 'x')" class="push_button operator_button">&#x00D7;</button>
         </div>
         <div class="button_row">
             <button class="push_button number_button">1</button>
             <button  class="push_button number_button">2</button>
             <button  class="push_button number_button">3</button>
-            <button id="btnSubtract" onclick="calculator.subtract()" class="push_button operator_button">-</button>
+            <button id="btnSubtract" onclick="calculator.setOperation('-', '-')" class="push_button operator_button">-</button>
         </div>
         <div class="button_row">
             <button class="push_button number_button">0</button>
             <button  class="push_button number_button">.</button>
             <button id="btnEquals" onclick="calculator.equals()" class="push_button operator_button">=</button>
-            <button id="btnAdd"  onclick="calculator.add()"class="push_button operator_button">+</button>
+            <button id="btnAdd"  onclick="calculator.setOperation('+', '+')"class="push_button operator_button">+</button>
+        </div>
+        <div class="button_row">
+            <button class="push_button function_button" onclick="calculator.clearEntry()">CE</button>
+            <button class="push_button function_button" onclick="calculator.clear()">C</button>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/calculator.js"></script>
+<script type="text/javascript" src="js/numeral.min.js"></script>
 <script type="text/javascript">
     app.initialize();
 </script>

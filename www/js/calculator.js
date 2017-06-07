@@ -24,8 +24,9 @@ var calculator = {
     },
 
     setPreviousNumber: function(number){
-        this.previousNumber = number
-        document.getElementById('previous_number_field').innerHTML = this.previousNumber;
+        this.previousNumber = number;
+        var string = numeral(number).format('0,0.00');
+        document.getElementById('previous_number_field').innerHTML = string;
     },
 
     resetCurrentNumber: function(){
@@ -33,36 +34,70 @@ var calculator = {
         document.getElementById('current_number_field').innerHTML = this.currentNumber;
     },
 
-    moveNumberToMemory: function(){
-        this.setPreviousNumber(this.currentNumber);
-        this.resetCurrentNumber();
-    },
-
-    doCalculation: function(){
-        var result = Number(this.previousNumber) + Number(this.currentNumber);
+    moveNumberToMemory: function(result){
         this.setPreviousNumber(result);
         this.resetCurrentNumber();
     },
+    setOperation: function(nextOperator, operatorSign){
+        if(this.operator != undefined){
+            this.equals();
+        }
+        this.operator = nextOperator;
+        this.setOperator(operatorSign);
+        if(this.currentNumber != 0){
+            this.moveNumberToMemory(this.currentNumber);
+        }
+    },
     add: function(){
-        this.setOperator("+");
-        this.moveNumberToMemory();
+        return Number(this.previousNumber) + Number(this.currentNumber);
     },
     subtract: function(){
-        this.setOperator("-");
-        this.moveNumberToMemory();
+        return  Number(this.previousNumber) - Number(this.currentNumber);
     },
     multiply: function(){
-        this.setOperator("x");
-        this.moveNumberToMemory();
+        return  Number(this.previousNumber) *  Number(this.currentNumber);
     },
     divide: function(){
-        this.setOperator("&#x00F7;");
-        this.moveNumberToMemory();
+        if(this.currentNumber === 0){
+            return 'NAN';
+        } else{
+            return result =  Number(this.previousNumber)/ Number(this.currentNumber);
+        }
     },
     equals: function(){
-
+        var result = undefined;
+        switch(this.operator){
+            case '+':
+                result = this.add();
+                break;
+            case '-':
+                result = this.subtract();
+                break; 
+            case '*':
+                result = this.multiply();
+                break; 
+            case '/':
+                result = this.divide()
+                break;
+            default:
+                return;
+        }
+        this.moveNumberToMemory(result);
+        this.clearEntry();
     },
-    setOperator: function(operator){
-        document.getElementById('operator').innerHTML = operator;
+    setOperator: function(newOpoeratorSign){
+        if(newOpoeratorSign === undefined){
+            document.getElementById('operator').innerHTML = '';
+        } else {
+            document.getElementById('operator').innerHTML = newOpoeratorSign;
+        }
+    },
+    clearEntry: function(){
+        this.resetCurrentNumber();
+        this.setOperator(undefined);
+    },
+    clear: function(){
+        this.clearEntry();
+        this.setPreviousNumber(0);
     }
 }
