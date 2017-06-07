@@ -21,6 +21,7 @@ var calculator = {
         }
         document.getElementById('current_number_field').innerHTML = this.currentNumber;
         console.log("Got number " + number + " and setting field to " + this.currentNumber);
+        navigator.vibrate(50);
     },
 
     setPreviousNumber: function(number){
@@ -47,6 +48,7 @@ var calculator = {
         if(this.currentNumber != 0){
             this.moveNumberToMemory(this.currentNumber);
         }
+        navigator.vibrate(50);
     },
     add: function(){
         return Number(this.previousNumber) + Number(this.currentNumber);
